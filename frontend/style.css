@@ -1,0 +1,71 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    text-align: center;
+    color: white;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #667eea;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #5a67d8;
+}
+
+.results {
+    margin-top: 30px;
+}
+
+.skills-box {
+    margin-top: 10px;
+}
+
+.skill {
+    display: inline-block;
+    background: #00c9a7;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 20px;
+    color: white;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 20px;
+    background: #ddd;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: #00c9a7;
+    border-radius: 10px;
+}
+
+#loading {
+    display: none;
+    color: #555;
+}

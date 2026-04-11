@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🧠 AI Resume Analyzer</h1>
+
+    <div class="card">
+        <h2>Upload Your Resume</h2>
+
+        <input type="file" id="fileInput">
+        <button onclick="uploadResume()">Analyze Resume</button>
+
+        <p id="loading">⏳ Analyzing... Stay confident 🚀</p>
+    </div>
+
+    <div class="results">
+        <h3>⭐ Resume Score:</h3>
+        <p id="score"></p>
+
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <h3>✅ Skills:</h3>
+        <div id="skills" class="skills-box"></div>
+
+        <h3>🎯 Matching Job Roles:</h3>
+        <p id="roles"></p>
+
+        <h3>💡 Suggestions:</h3>
+        <p id="suggestions"></p>
+
+        <h3>🔥 Confidence Boost:</h3>
+        <p id="confidence"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
