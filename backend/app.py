@@ -11,14 +11,23 @@ def home():
 
 @app.route("/analyze", methods=["POST"])
 def analyze_resume():
+    # Check if file exists
     if "resume" not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
 
     file = request.files["resume"]
 
+    # Validate file type
+    if not file.filename.endswith(('.pdf', '.doc', '.docx')):
+        return jsonify({"error": "Invalid file format. Upload PDF/DOC/DOCX"}), 400
+
     try:
+        # Extract text and skills
         text = extract_text(file)
         skills = extract_skills(text)
+
+        # Convert all skills to lowercase
+        skills = [skill.lower() for skill in skills]
 
         # Suggestions
         suggestions = []
@@ -27,10 +36,8 @@ def analyze_resume():
         if "react" not in skills:
             suggestions.append("Learn React")
 
-        # ⭐ Resume Score
-        score = len(skills) * 20
-        if score > 100:
-            score = 100
+        # ⭐ Resume Score (Max 100)
+        score = min(len(skills) * 15, 100)
 
         # 🎯 Job Role Matching
         job_roles = {
@@ -45,6 +52,9 @@ def analyze_resume():
             if match_count >= 2:
                 matched_roles.append(role)
 
+        # Remove duplicates (safety)
+        matched_roles = list(set(matched_roles))
+
         return jsonify({
             "skills": skills,
             "suggestions": suggestions,
@@ -57,4 +67,4 @@ def analyze_resume():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
