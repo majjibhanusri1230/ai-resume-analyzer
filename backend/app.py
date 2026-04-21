@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from resume_parser import extract_text, extract_skills
-import os
 
 app = Flask(__name__)
 CORS(app)
@@ -42,24 +41,20 @@ def analyze_resume():
 
         matched_roles = []
         for role, req_skills in job_roles.items():
-            match_count = len(set(skills) & set(req_skills))
-            if match_count >= 2:
+            if len(set(skills) & set(req_skills)) >= 2:
                 matched_roles.append(role)
-
-        matched_roles = list(set(matched_roles))
 
         return jsonify({
             "skills": skills,
             "suggestions": suggestions,
             "score": score,
-            "roles": matched_roles
+            "roles": list(set(matched_roles))
         })
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
-# ✅ FIXED PART (IMPORTANT)
+# ✅ IMPORTANT (THIS WAS MISSING)
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # dynamic port for Render
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=True)

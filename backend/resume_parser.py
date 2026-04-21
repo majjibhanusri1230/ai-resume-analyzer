@@ -11,7 +11,7 @@ def extract_text(file):
 
 def extract_skills(text):
     skills_list = ["python", "java", "html", "css", "javascript", "sql", "react"]
-    
+
     text = text.lower()
     found_skills = []
 
