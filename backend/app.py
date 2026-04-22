@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from backend.resume_parser import extract_text, extract_skills
+from resume_parser import extract_text, extract_skills
 
 app = Flask(__name__)
 CORS(app)

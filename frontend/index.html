@@ -12,10 +12,13 @@
     <div class="card">
         <h2>Upload Your Resume</h2>
 
-        <input type="file" id="fileInput">
+        <!-- ✅ FIXED FILE INPUT -->
+        <input type="file" id="fileInput" accept=".pdf,.doc,.docx">
+
         <button onclick="uploadResume()">Analyze Resume</button>
 
-        <p id="loading">⏳ Analyzing... Stay confident 🚀</p>
+        <!-- ✅ HIDDEN LOADING INITIALLY -->
+        <p id="loading" style="display:none;">⏳ Analyzing... Stay confident 🚀</p>
     </div>
 
     <div class="results">
